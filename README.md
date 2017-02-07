@@ -3,7 +3,7 @@ Test project to setup SSL pinning with Xamarin
 
 Looking for a workaround for blob post [here](https://thomasbandt.com/certificate-and-public-key-pinning-with-xamarin)
 
-Basically I:
+Basically I did the following to get this to work:
 - Dumped Xamarin's source for `NSUrlSessionHandler.cs` and its code in `HttpClientEx.cs`
 - Figured out a quick command to export certificate
 - Wrote some C# code ported from Obj-C [here](https://gist.github.com/edwardmp/df8517aa9f1752e73353)
