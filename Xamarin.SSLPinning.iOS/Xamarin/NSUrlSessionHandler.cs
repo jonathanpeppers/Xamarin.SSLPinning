@@ -381,7 +381,7 @@ namespace Xamarin.SSLPinning.iOS
                 }
                 else
                 {
-                    completionHandler(NSUrlSessionAuthChallengeDisposition.RejectProtectionSpace, null);
+                    completionHandler(NSUrlSessionAuthChallengeDisposition.CancelAuthenticationChallenge, null);
                 }
             }
         }

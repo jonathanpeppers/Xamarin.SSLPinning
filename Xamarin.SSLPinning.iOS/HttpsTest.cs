@@ -1,5 +1,5 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System;
+using System.Net.Http;
 using NUnit.Framework;
 
 namespace Xamarin.SSLPinning.iOS
@@ -7,13 +7,19 @@ namespace Xamarin.SSLPinning.iOS
     [TestFixture]
     public class HttpsTest
     {
-        private const int Timeout = 3000;
-
-        [Test, Timeout(Timeout)]
-        public async Task Get()
+        [Test]
+        public void GoodCert()
         {
             var httpClient = new HttpClient(new NSUrlSessionHandler());
-            var response = await httpClient.GetAsync("https://httpbin.org/get");
+            var response = httpClient.GetAsync("https://httpbin.org/get").Result;
+            response.EnsureSuccessStatusCode();
+        }
+
+        [Test, ExpectedException(typeof(AggregateException))]
+        public void BadCert()
+        {
+            var httpClient = new HttpClient(new NSUrlSessionHandler());
+            var response = httpClient.GetAsync("https://www.google.com").Result;
             response.EnsureSuccessStatusCode();
         }
     }
