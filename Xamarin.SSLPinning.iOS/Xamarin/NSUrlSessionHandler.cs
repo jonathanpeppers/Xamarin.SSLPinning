@@ -385,7 +385,18 @@ namespace Foundation
                     return;
                 }
 
-                completionHandler(NSUrlSessionAuthChallengeDisposition.PerformDefaultHandling, challenge.ProposedCredential);
+                //NOTE: SSL Pinning here
+                var serverCertChain = challenge.ProtectionSpace.ServerSecTrust;
+                var first = serverCertChain[0].DerData;
+                var cert = NSData.FromFile("httpbin.cer");
+                if (first.IsEqual(cert))
+                {
+                    completionHandler(NSUrlSessionAuthChallengeDisposition.PerformDefaultHandling, challenge.ProposedCredential);
+                }
+                else
+                {
+                    completionHandler(NSUrlSessionAuthChallengeDisposition.RejectProtectionSpace, null);
+                }
             }
         }
 
