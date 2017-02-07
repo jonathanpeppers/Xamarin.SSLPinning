@@ -12,7 +12,7 @@ namespace Xamarin.SSLPinning.iOS
         [Test, Timeout(Timeout)]
         public async Task Get()
         {
-            var httpClient = new HttpClient(new Foundation.NSUrlSessionHandler());
+            var httpClient = new HttpClient(new NSUrlSessionHandler());
             var response = await httpClient.GetAsync("https://httpbin.org/get");
             response.EnsureSuccessStatusCode();
         }

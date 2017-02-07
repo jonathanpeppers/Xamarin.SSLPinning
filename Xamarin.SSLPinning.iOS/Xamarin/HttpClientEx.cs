@@ -7,7 +7,7 @@ using ObjCRuntime;
 
 // due to historical reasons (around CFNetwork) Xamarin.Mac includes this inside it's profile assembly
 // and not a custom System.Net.Http assembly
-namespace Foundation
+namespace Xamarin.SSLPinning.iOS
 {
     partial class NSUrlSessionHandler
     {

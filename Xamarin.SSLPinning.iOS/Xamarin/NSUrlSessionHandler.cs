@@ -34,26 +34,12 @@ using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-
-#if UNIFIED
 using CoreFoundation;
 using Foundation;
 using Security;
-#else
-using MonoTouch.CoreFoundation;
-using MonoTouch.Foundation;
-using MonoTouch.Security;
-using System.Globalization;
-using nint = System.Int32;
-using nuint = System.UInt32;
-#endif
 
-#if SYSTEM_NET_HTTP
-namespace System.Net.Http {
-#else
-namespace Foundation
+namespace Xamarin.SSLPinning.iOS
 {
-#endif
     public partial class NSUrlSessionHandler : HttpMessageHandler
     {
         readonly Dictionary<string, string> headerSeparators = new Dictionary<string, string>
