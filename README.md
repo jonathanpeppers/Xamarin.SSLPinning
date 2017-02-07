@@ -29,3 +29,5 @@ If you need to get the cert for your own site, run the command:
 openssl s_client -connect httpbin.org:443 | openssl x509 -outform DER > httpbin.cer
 ```
 Replace `httpbin` with your domain.
+
+If Xamarin could somehow expose `DidReceiveChallenge` that would be awesome!
