@@ -1,7 +1,7 @@
 # Xamarin.SSLPinning
 Test project to setup SSL pinning with Xamarin
 
-Looking for a workaround for blob post [here](https://thomasbandt.com/certificate-and-public-key-pinning-with-xamarin)
+Looking for a workaround for blog post [here](https://thomasbandt.com/certificate-and-public-key-pinning-with-xamarin)
 
 Basically I did the following to get this to work:
 - Dumped Xamarin's source for `NSUrlSessionHandler.cs` and its code in `HttpClientEx.cs`
@@ -23,6 +23,7 @@ else
 }
 ```
 *NOTE: you may want to do some checks for empty array & reuse NSData for better performance*
+*MORE NOTE: I would not ship the public key as a flat file in your app, place it somewhere safe inside an assembly so an attacker will not easily replace it with their own*
 
 If you need to get the cert for your own site, run the command:
 ```
