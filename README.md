@@ -23,6 +23,7 @@ else
 }
 ```
 *NOTE: you may want to do some checks for empty array & reuse NSData for better performance*
+
 *MORE NOTE: I would not ship the public key as a flat file in your app, place it somewhere safe inside an assembly so an attacker will not easily replace it with their own*
 
 If you need to get the cert for your own site, run the command:
